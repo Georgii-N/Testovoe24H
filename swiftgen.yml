@@ -1,0 +1,23 @@
+strings:
+  inputs:
+    - Testovoe24H/Supporting Files/Localizable/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: Testovoe24H/Supporting Files/Resources/Strings+Generated.swift
+
+xcassets:
+  inputs:
+    - Testovoe24H/Supporting Files/Assets/Colors/Colors.xcassets
+  outputs:
+    - templateName: swift5
+      output: Testovoe24H/Supporting Files/Resources/Colors.swift
+      params:
+        enumName: Colors
+        
+  inputs:
+    - Testovoe24H/Supporting Files/Assets/Images/Images.xcassets
+  outputs:
+    - templateName: swift5
+      output: Testovoe24H/Supporting Files/Resources/Images.swift
+      params:
+        enumName: Images
