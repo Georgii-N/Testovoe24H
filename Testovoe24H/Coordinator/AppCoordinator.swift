@@ -12,6 +12,6 @@ final class AppCoordinator: AppCoordinatorProtocol {
     
     // MARK: - Public Methods:
     func start() {
-        navigationController.pushViewController(ViewController(), animated: true)
+        navigationController.pushViewController(ImageListViewController(), animated: true)
     }
 }
