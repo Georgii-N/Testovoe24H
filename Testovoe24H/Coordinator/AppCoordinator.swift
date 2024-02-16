@@ -4,14 +4,17 @@ final class AppCoordinator: AppCoordinatorProtocol {
     
     // MARK: - Constants and Variables:
     private let navigationController: UINavigationController
+    private let viewControllerBuilder: ViewControllerBuilderProtocol
     
     // MARK: - LifeCycle:
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, viewControllerBuilder: ViewControllerBuilderProtocol) {
         self.navigationController = navigationController
+        self.viewControllerBuilder = viewControllerBuilder
     }
     
     // MARK: - Public Methods:
     func start() {
-        navigationController.pushViewController(ImageListViewController(), animated: true)
+        let imageListViewController = viewControllerBuilder.buildImageListController()
+        navigationController.pushViewController(imageListViewController, animated: true)
     }
 }

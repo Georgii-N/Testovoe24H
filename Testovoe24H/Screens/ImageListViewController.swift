@@ -2,6 +2,9 @@ import UIKit
 
 final class ImageListViewController: UIViewController {
     
+    // MARK: - Dependencies:
+    private let imageListViewModel: ImageListViewModelProtocol
+    
     // MARK: - UI:
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
@@ -13,19 +16,20 @@ final class ImageListViewController: UIViewController {
         collectionView.backgroundColor = .black
         return collectionView
     }()
+ 
+    // MARK: - Lifecycle:
+    init(imageListViewModel: ImageListViewModelProtocol) {
+        self.imageListViewModel = imageListViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        let networkClient = NetworkClient(apiKey: Resources.API.unsplash)
-        networkClient.fetchGreeting { result in
-            switch result {
-            case .success(let result):
-                print(result)
-            case .failure(let error):
-                print(error)
-            }
-        }
     }
 }
 // MARK: - UICollectionViewDataSource:
