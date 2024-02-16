@@ -17,7 +17,15 @@ final class ImageListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        
+        let networkClient = NetworkClient(apiKey: Resources.API.unsplash)
+        networkClient.fetchGreeting { result in
+            switch result {
+            case .success(let result):
+                print(result)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 // MARK: - UICollectionViewDataSource:
