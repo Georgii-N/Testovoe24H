@@ -16,13 +16,16 @@ final class ImageListViewModel: ImageListViewModelProtocol {
     // MARK: - Lifecycle:
     init(networkClient: NetworkClientProtocol) {
         self.networkClient = networkClient
+        fetch()
     }
     
+    // MARK: - Public Functions:
     func fetch() {
-        networkClient.fetchGreeting { result in
+        networkClient.fetchGreeting { [weak self] result in
+            guard let self else { return }
             switch result {
             case .success(let result):
-                print(result)
+                self.photos = result
             case .failure(let error):
                 print(error)
             }

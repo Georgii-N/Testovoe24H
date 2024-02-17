@@ -16,7 +16,7 @@ final class ImageListViewController: UIViewController {
         collectionView.backgroundColor = .black
         return collectionView
     }()
- 
+    
     // MARK: - Lifecycle:
     init(imageListViewModel: ImageListViewModelProtocol) {
         self.imageListViewModel = imageListViewModel
@@ -31,11 +31,20 @@ final class ImageListViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
     }
+    
+    // MARK: - Private Functions:
+    private func bind() {
+        imageListViewModel.observablePhotos.bind { [weak self] _ in
+            guard let self else { return }
+            collectionView.reloadData()
+        }
+    }
+    
 }
 // MARK: - UICollectionViewDataSource:
 extension ImageListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        imageListViewModel.observablePhotos.wrappedValue.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
