@@ -1,6 +1,10 @@
-import Foundation
+import UIKit
 
 enum Resources {
+    enum SystemIcons {
+        static let heartSymbol = UIImage(systemName: "heart.fill")
+    }
+    
     enum Urls {
         static let photos = "https://api.unsplash.com/photos/"
     }

@@ -26,6 +26,7 @@ final class ImageListViewModel: ImageListViewModelProtocol {
             switch result {
             case .success(let result):
                 self.photos = result
+                print(self.photos.count)
             case .failure(let error):
                 print(error)
             }

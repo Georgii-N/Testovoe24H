@@ -13,7 +13,7 @@ final class ImageListViewController: UIViewController {
         collectionView.delegate = self
         collectionView.register(ImageListCell.self)
         collectionView.showsVerticalScrollIndicator = false
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = Colors.backgroundBlack.color
         return collectionView
     }()
     
@@ -30,6 +30,8 @@ final class ImageListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setupUI()
+        bind()
     }
     
     // MARK: - Private Functions:
@@ -49,6 +51,8 @@ extension ImageListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageListCell = collectionView.dequeueConfigurableCell(for: indexPath)
+        let photo = imageListViewModel.observablePhotos.wrappedValue[indexPath.row]
+        cell.setCellUI(photosModel: photo)
         
         return cell
     }
@@ -57,7 +61,11 @@ extension ImageListViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout:
 extension ImageListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.bounds.width - 2 * UIConstants.mediumInset, height: 100)
+        let photo = imageListViewModel.observablePhotos.wrappedValue[indexPath.row]
+        let ratio = CGFloat(photo.width) / CGFloat(photo.height)
+        let width = view.bounds.width - 2 * UIConstants.mediumInset
+        let height = width / ratio + UIConstants.Cell.heightLabel + UIConstants.Cell.heightStack + 2 * UIConstants.mediumInset
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -65,18 +73,23 @@ extension ImageListViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        0
+        UIConstants.mediumInset
     }
 }
 
 // MARK: - Setup Views:
 private extension ImageListViewController {
+    func setupUI() {
+        view.backgroundColor = Colors.backgroundBlack.color
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     func setupViews() {
         view.addSubview(collectionView, constraints: [
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: UIConstants.smallInset),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
