@@ -2,14 +2,6 @@ import Foundation
 
 final class NetworkClient: NetworkClientProtocol {
     
-    enum NetworkClientError: Error {
-        case httpStatusCode(Int)
-        case urlRequestError(Error)
-        case urlSessionError
-        case parsingError
-        case forbidden
-    }
-    
     // MARK: - Constants and Variables:
     private var apiKey: String
     
@@ -19,7 +11,7 @@ final class NetworkClient: NetworkClientProtocol {
     }
     
     // MARK: - Public Methods:
-    func fetchGreeting(page: Int, completion: @escaping (Result<PhotosModel, Error>) -> Void) {
+    func fetchGreeting(page: Int, completion: @escaping (Result<PhotosModel, NetworkClientError>) -> Void) {
         guard var urlComponents = URLComponents(string: Resources.Urls.photos) else {
             print("Invalid urlComponents")
             return }

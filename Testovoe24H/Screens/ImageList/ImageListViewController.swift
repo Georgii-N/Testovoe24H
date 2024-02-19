@@ -52,6 +52,34 @@ final class ImageListViewController: UIViewController {
             guard let self else { return }
             collectionView.reloadData()
         }
+        
+        imageListViewModel.observableErrorDescription.bind { [weak self] errorDescription in
+            guard
+                let errorDescription,
+                let self
+            else { return }
+            
+            self.showAlert(error: errorDescription)
+        }
+    }
+    
+    private func showAlert(error: String) {
+        let alertController = UIAlertController(title: L10n.Alert.Title.error,
+                                                message: error,
+                                                preferredStyle: .alert)
+        
+        let alertRepeatAction = UIAlertAction(title: L10n.Alert.Button.repeat, style: .default) { [weak self] _ in
+            guard let self else { return }
+            self.imageListViewModel.fetch()
+        }
+        
+        let alertCancelAction =  UIAlertAction(title: L10n.Alert.Button.cancel, style: .destructive) { _ in
+            alertController.dismiss(animated: true)
+        }
+        
+        alertController.addAction(alertCancelAction)
+        alertController.addAction(alertRepeatAction)
+        present(alertController, animated: true)
     }
 }
 

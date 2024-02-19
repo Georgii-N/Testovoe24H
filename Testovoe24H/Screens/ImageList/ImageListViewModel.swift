@@ -14,6 +14,13 @@ final class ImageListViewModel: ImageListViewModelProtocol {
     @Observable
     private var photos: PhotosModel = []
     
+    var observableErrorDescription: Observable<String?> {
+        $errorDescription
+    }
+    
+    @Observable
+    private(set) var errorDescription: String?
+    
     // MARK: - Lifecycle:
     init(networkClient: NetworkClientProtocol) {
         self.networkClient = networkClient
@@ -29,7 +36,7 @@ final class ImageListViewModel: ImageListViewModelProtocol {
                 self.photos.append(contentsOf: result)
                 pageForFetch += 1
             case .failure(let error):
-                print(error)
+                self.errorDescription = error.toString()
             }
         }
     }

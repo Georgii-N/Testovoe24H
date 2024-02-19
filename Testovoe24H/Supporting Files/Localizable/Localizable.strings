@@ -1,2 +1,12 @@
-"title" = "unsplash";
-"title2" = "unsplash";
+"Alert.Title.Error" = "Ошибка";
+"Alert.Button.Repeat" = "Повторить";
+"Alert.Button.Cancel" = "Отменить";
+
+"NetworkError.StatusCode.BadRequest" = "The request was unacceptable";
+"NetworkError.StatusCode.Unauthorized" = "Unauthorized. Invalid Access Token";
+"NetworkError.StatusCode.Forbidden" = "Forbidden. Missing permissions to perform request";
+"NetworkError.StatusCode.Not Found" = "The requested resource doesn’t exist";
+"NetworkError.StatusCode.Default" = "Something went wrong:(";
+"NetworkError.UrlRequest" = "URL Request Error: ";
+"NetworkError.UrlSession" = "URL Session Error";
+"NetworkError.Parsing" = "Parsing Error";
