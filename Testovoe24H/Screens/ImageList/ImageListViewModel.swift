@@ -4,6 +4,7 @@ final class ImageListViewModel: ImageListViewModelProtocol {
     
     // MARK: - Dependencies:
     private let networkClient: NetworkClientProtocol
+    private var pageForFetch = 1
     
     // MARK: - Observables:
     var observablePhotos: Observable<PhotosModel> {
@@ -21,12 +22,12 @@ final class ImageListViewModel: ImageListViewModelProtocol {
     
     // MARK: - Public Functions:
     func fetch() {
-        networkClient.fetchGreeting { [weak self] result in
+        networkClient.fetchGreeting(page: pageForFetch) { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let result):
-                self.photos = result
-                print(self.photos.count)
+                self.photos.append(contentsOf: result)
+                pageForFetch += 1
             case .failure(let error):
                 print(error)
             }

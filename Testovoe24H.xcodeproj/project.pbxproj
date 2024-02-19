@@ -30,6 +30,10 @@
 		40B2F2792B7CE3A800B5697F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B2F2782B7CE3A800B5697F /* AppDelegate.swift */; };
 		40B2F2822B7CE3AC00B5697F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40B2F2812B7CE3AC00B5697F /* Assets.xcassets */; };
 		40B2F2852B7CE3AC00B5697F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40B2F2832B7CE3AC00B5697F /* LaunchScreen.storyboard */; };
+		40D9775A2B824CD5007B1D22 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D977592B824CD5007B1D22 /* SingleImageViewController.swift */; };
+		40D9775C2B824D18007B1D22 /* SingleImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9775B2B824D18007B1D22 /* SingleImageViewModel.swift */; };
+		40D9775E2B824D35007B1D22 /* SingleImageViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9775D2B824D35007B1D22 /* SingleImageViewModelProtocol.swift */; };
+		40D977602B82568A007B1D22 /* SingleImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9775F2B82568A007B1D22 /* SingleImageModel.swift */; };
 		40F666632B7DD66500908638 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40F666622B7DD66500908638 /* Images.xcassets */; };
 		40F666652B7DD67500908638 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40F666642B7DD67500908638 /* Colors.xcassets */; };
 		40F6666E2B7DD7F700908638 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 40F6666F2B7DD7F700908638 /* Localizable.strings */; };
@@ -62,6 +66,10 @@
 		40B2F2812B7CE3AC00B5697F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40B2F2842B7CE3AC00B5697F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40B2F2862B7CE3AC00B5697F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40D977592B824CD5007B1D22 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
+		40D9775B2B824D18007B1D22 /* SingleImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewModel.swift; sourceTree = "<group>"; };
+		40D9775D2B824D35007B1D22 /* SingleImageViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewModelProtocol.swift; sourceTree = "<group>"; };
+		40D9775F2B82568A007B1D22 /* SingleImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageModel.swift; sourceTree = "<group>"; };
 		40F666622B7DD66500908638 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		40F666642B7DD67500908638 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		40F6666F2B7DD7F700908638 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -160,6 +168,28 @@
 			path = Testovoe24H;
 			sourceTree = "<group>";
 		};
+		40D977572B824CA0007B1D22 /* ImageList */ = {
+			isa = PBXGroup;
+			children = (
+				4047B2192B7E448B004E1686 /* ImageListViewController.swift */,
+				4047B21B2B7E45FB004E1686 /* ImageListCell.swift */,
+				406AFB2A2B7FBA7200F1E63B /* ImageListViewModel.swift */,
+				406AFB2C2B7FBAC700F1E63B /* ImageListViewModelProtocol.swift */,
+			);
+			path = ImageList;
+			sourceTree = "<group>";
+		};
+		40D977582B824CB1007B1D22 /* SingleImage */ = {
+			isa = PBXGroup;
+			children = (
+				40D977592B824CD5007B1D22 /* SingleImageViewController.swift */,
+				40D9775B2B824D18007B1D22 /* SingleImageViewModel.swift */,
+				40D9775D2B824D35007B1D22 /* SingleImageViewModelProtocol.swift */,
+				40D9775F2B82568A007B1D22 /* SingleImageModel.swift */,
+			);
+			path = SingleImage;
+			sourceTree = "<group>";
+		};
 		40F6665A2B7DD57300908638 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,10 +241,8 @@
 		40F666662B7DD6AE00908638 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				4047B2192B7E448B004E1686 /* ImageListViewController.swift */,
-				4047B21B2B7E45FB004E1686 /* ImageListCell.swift */,
-				406AFB2A2B7FBA7200F1E63B /* ImageListViewModel.swift */,
-				406AFB2C2B7FBAC700F1E63B /* ImageListViewModelProtocol.swift */,
+				40D977572B824CA0007B1D22 /* ImageList */,
+				40D977582B824CB1007B1D22 /* SingleImage */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -360,9 +388,12 @@
 			files = (
 				406AFB332B7FBFB000F1E63B /* ViewControllerBuilderProtocol.swift in Sources */,
 				406AFB2B2B7FBA7200F1E63B /* ImageListViewModel.swift in Sources */,
+				40D9775E2B824D35007B1D22 /* SingleImageViewModelProtocol.swift in Sources */,
+				40D9775A2B824CD5007B1D22 /* SingleImageViewController.swift in Sources */,
 				4047B21A2B7E448B004E1686 /* ImageListViewController.swift in Sources */,
 				4047B21C2B7E45FB004E1686 /* ImageListCell.swift in Sources */,
 				4047C9932B7DF30200D5D656 /* UICollectionView + Extension.swift in Sources */,
+				40D977602B82568A007B1D22 /* SingleImageModel.swift in Sources */,
 				406AFB312B7FBEEC00F1E63B /* ViewControllersBuilder.swift in Sources */,
 				4047B2292B7E5B12004E1686 /* Images.swift in Sources */,
 				4047C9912B7DF2DA00D5D656 /* Observable.swift in Sources */,
@@ -379,6 +410,7 @@
 				40B2F2792B7CE3A800B5697F /* AppDelegate.swift in Sources */,
 				4047B22A2B7E5B12004E1686 /* Strings.swift in Sources */,
 				406AFB2D2B7FBAC700F1E63B /* ImageListViewModelProtocol.swift in Sources */,
+				40D9775C2B824D18007B1D22 /* SingleImageViewModel.swift in Sources */,
 				40F6667F2B7DE5AD00908638 /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

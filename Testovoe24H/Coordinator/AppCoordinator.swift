@@ -17,4 +17,9 @@ final class AppCoordinator: AppCoordinatorProtocol {
         let imageListViewController = viewControllerBuilder.buildImageListController()
         navigationController.pushViewController(imageListViewController, animated: true)
     }
+    
+    func goToSingleImageViewController(photo: SingleImageModel) {
+        let singleImageViewController = viewControllerBuilder.buildSingleImageListController(photo: photo)
+        navigationController.pushViewController(singleImageViewController, animated: true)
+    }
 }

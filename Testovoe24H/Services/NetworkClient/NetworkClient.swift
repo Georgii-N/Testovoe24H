@@ -19,13 +19,14 @@ final class NetworkClient: NetworkClientProtocol {
     }
     
     // MARK: - Public Methods:
-    func fetchGreeting(completion: @escaping (Result<PhotosModel, Error>) -> Void) {
+    func fetchGreeting(page: Int, completion: @escaping (Result<PhotosModel, Error>) -> Void) {
         guard var urlComponents = URLComponents(string: Resources.Urls.photos) else {
             print("Invalid urlComponents")
             return }
         
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: apiKey)
+            URLQueryItem(name: "client_id", value: apiKey),
+            URLQueryItem(name: "page", value: String(page))
         ]
         
         guard let url = urlComponents.url else { 
@@ -34,8 +35,7 @@ final class NetworkClient: NetworkClientProtocol {
         
         var request = URLRequest(url: url)
         request.timeoutInterval = 10
-        
-        print("request", request)
+
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let response = response as? HTTPURLResponse else {
                 completion(.failure(NetworkClientError.urlSessionError))

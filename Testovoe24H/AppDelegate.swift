@@ -12,6 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let coordinator = AppCoordinator(navigationController: navigationController, viewControllerBuilder: viewControllerBuilder)
         
+        viewControllerBuilder.coordinator = coordinator
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

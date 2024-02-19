@@ -3,6 +3,7 @@ import UIKit
 final class ImageListViewController: UIViewController {
     
     // MARK: - Dependencies:
+    private let coordinator: AppCoordinatorProtocol?
     private let imageListViewModel: ImageListViewModelProtocol
     
     // MARK: - UI:
@@ -18,7 +19,8 @@ final class ImageListViewController: UIViewController {
     }()
     
     // MARK: - Lifecycle:
-    init(imageListViewModel: ImageListViewModelProtocol) {
+    init(coordinator: AppCoordinatorProtocol?, imageListViewModel: ImageListViewModelProtocol) {
+        self.coordinator = coordinator
         self.imageListViewModel = imageListViewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,6 +36,16 @@ final class ImageListViewController: UIViewController {
         bind()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     // MARK: - Private Functions:
     private func bind() {
         imageListViewModel.observablePhotos.bind { [weak self] _ in
@@ -41,8 +53,8 @@ final class ImageListViewController: UIViewController {
             collectionView.reloadData()
         }
     }
-    
 }
+
 // MARK: - UICollectionViewDataSource:
 extension ImageListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -75,13 +87,28 @@ extension ImageListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         UIConstants.mediumInset
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photo = imageListViewModel.observablePhotos.wrappedValue[indexPath.row]
+        let singlePhoto = SingleImageModel(imageUrl: photo.urls.regular, username: photo.user.username)
+        
+        DispatchQueue.main.async {
+            self.coordinator?.goToSingleImageViewController(photo: singlePhoto)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row + 1 == imageListViewModel.observablePhotos.wrappedValue.count {
+            imageListViewModel.fetch()
+        }
+    }
 }
 
 // MARK: - Setup Views:
 private extension ImageListViewController {
     func setupUI() {
         view.backgroundColor = Colors.backgroundBlack.color
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.backgroundColor = Colors.backgroundBlack.color
     }
     
     func setupViews() {

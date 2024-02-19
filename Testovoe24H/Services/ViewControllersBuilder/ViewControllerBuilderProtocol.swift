@@ -1,5 +1,7 @@
 import Foundation
 
-protocol ViewControllerBuilderProtocol {
+protocol ViewControllerBuilderProtocol: AnyObject {
+    
     func buildImageListController() -> ImageListViewController
+    func buildSingleImageListController(photo: SingleImageModel) -> SingleImageViewController
 }
