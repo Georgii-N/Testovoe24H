@@ -96,9 +96,43 @@
 			children = (
 				406AFB2F2B7FBECF00F1E63B /* ViewControllersBuilder */,
 				406AFB2E2B7FBEC200F1E63B /* NetworkClient */,
-				4035A4552B7F75890049379E /* PhotosModel.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		4042090E2B839A540066DCAA /* ImageListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4047B2192B7E448B004E1686 /* ImageListViewController.swift */,
+				4047B21B2B7E45FB004E1686 /* ImageListCell.swift */,
+			);
+			path = ImageListViewController;
+			sourceTree = "<group>";
+		};
+		4042090F2B839A620066DCAA /* ImageListViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				406AFB2A2B7FBA7200F1E63B /* ImageListViewModel.swift */,
+				406AFB2C2B7FBAC700F1E63B /* ImageListViewModelProtocol.swift */,
+			);
+			path = ImageListViewModel;
+			sourceTree = "<group>";
+		};
+		404209102B839A760066DCAA /* SingleImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				40D977592B824CD5007B1D22 /* SingleImageViewController.swift */,
+			);
+			path = SingleImageViewController;
+			sourceTree = "<group>";
+		};
+		404209112B839A860066DCAA /* SingleImageViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				40D9775B2B824D18007B1D22 /* SingleImageViewModel.swift */,
+				40D9775D2B824D35007B1D22 /* SingleImageViewModelProtocol.swift */,
+			);
+			path = SingleImageViewModel;
 			sourceTree = "<group>";
 		};
 		4047B2252B7E5AD6004E1686 /* Generated */ = {
@@ -174,10 +208,9 @@
 		40D977572B824CA0007B1D22 /* ImageList */ = {
 			isa = PBXGroup;
 			children = (
-				4047B2192B7E448B004E1686 /* ImageListViewController.swift */,
-				4047B21B2B7E45FB004E1686 /* ImageListCell.swift */,
-				406AFB2A2B7FBA7200F1E63B /* ImageListViewModel.swift */,
-				406AFB2C2B7FBAC700F1E63B /* ImageListViewModelProtocol.swift */,
+				4042090E2B839A540066DCAA /* ImageListViewController */,
+				4042090F2B839A620066DCAA /* ImageListViewModel */,
+				4035A4552B7F75890049379E /* PhotosModel.swift */,
 			);
 			path = ImageList;
 			sourceTree = "<group>";
@@ -185,9 +218,8 @@
 		40D977582B824CB1007B1D22 /* SingleImage */ = {
 			isa = PBXGroup;
 			children = (
-				40D977592B824CD5007B1D22 /* SingleImageViewController.swift */,
-				40D9775B2B824D18007B1D22 /* SingleImageViewModel.swift */,
-				40D9775D2B824D35007B1D22 /* SingleImageViewModelProtocol.swift */,
+				404209102B839A760066DCAA /* SingleImageViewController */,
+				404209112B839A860066DCAA /* SingleImageViewModel */,
 				40D9775F2B82568A007B1D22 /* SingleImageModel.swift */,
 			);
 			path = SingleImage;
