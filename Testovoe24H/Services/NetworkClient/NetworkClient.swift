@@ -27,7 +27,7 @@ final class NetworkClient: NetworkClientProtocol {
         
         var request = URLRequest(url: url)
         request.timeoutInterval = 10
-
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let response = response as? HTTPURLResponse else {
                 completion(.failure(NetworkClientError.urlSessionError))

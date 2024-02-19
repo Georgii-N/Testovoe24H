@@ -51,7 +51,12 @@ private extension SingleImageViewController {
         let photo = singleImageViewModel.getPhoto()
         
         let imageURL = URL(string: photo.imageUrl)
-        imageView.kf.setImage(with: imageURL)
+        
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(with: imageURL, options: [
+            .transition(.fade(1)),
+            .cacheOriginalImage
+        ])
         
         title = photo.username
     }

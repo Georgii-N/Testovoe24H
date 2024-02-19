@@ -64,7 +64,12 @@ final class ImageListCell: UICollectionViewCell {
         likesLabel.textColor = textColor
         
         let imageURL = URL(string: photosModel.urls.thumb)
-        imageView.kf.setImage(with: imageURL)
+        
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(with: imageURL, options: [
+            .transition(.fade(1)),
+            .cacheOriginalImage
+        ])
         
         likesLabel.text = String(photosModel.likes)
     }

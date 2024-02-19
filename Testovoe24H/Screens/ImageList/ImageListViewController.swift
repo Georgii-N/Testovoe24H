@@ -40,7 +40,7 @@ final class ImageListViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -120,9 +120,7 @@ extension ImageListViewController: UICollectionViewDelegateFlowLayout {
         let photo = imageListViewModel.observablePhotos.wrappedValue[indexPath.row]
         let singlePhoto = SingleImageModel(imageUrl: photo.urls.regular, username: photo.user.username)
         
-        DispatchQueue.main.async {
-            self.coordinator?.goToSingleImageViewController(photo: singlePhoto)
-        }
+        self.coordinator?.goToSingleImageViewController(photo: singlePhoto)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
